@@ -1,6 +1,6 @@
 var timer = document.querySelector("#timer h1")
 var timerButton = document.querySelector("#timer button")
-
+var audio = new Audio("sound.mp3")
 
 var grow  = 0
 var int = setInterval(function(){
@@ -12,7 +12,7 @@ var int = setInterval(function(){
         timer.innerHTML = grow+"%"
         // console.log("Hey")
         timer.style.transform = "translateY(-100%)"
-        timerButton.style.transform = "translateY(-50%)"
+        timerButton.style.transform = "translateY(-100%)"
         timerButton.style.opacity = "1"
 
 
@@ -23,11 +23,16 @@ var int = setInterval(function(){
 
 
 timerButton.addEventListener("click",function(){
+    audio.play();
     gsap.to("#page1",{
         scale:1,
         duration:0.5
+
     })
     gsap.to("#timer",{
         opacity:0
+    })
+    gsap.to("#log",{
+        opacity:1
     })
 })
